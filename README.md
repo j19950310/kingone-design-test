@@ -16,12 +16,13 @@
 - **互動狀態**
   - 分頁（tab）與切換按鈕（chip）有 active / focus-visible 狀態示意
 - **部署可重現**
-  - push 到 `main` 即自動 build + deploy 到 Pages
+  - 以 **`bun.lock`** 鎖定依賴；push 到 `main` 即自動 build + deploy 到 Pages
 
 > 備註：本專案目前是「頁面骨架 + 元件拆分範例」，你可以把設計圖的實際素材/內容替換進 `src/modules/product/*`。
 
 ## 技術棧
 
+- **Bun**（套件管理與執行腳本）
 - **Vite**
 - **Vue 3**
 - **TypeScript**
@@ -62,9 +63,11 @@ src/
 
 ## 開發（請你在本機測試）
 
+需先安裝 [Bun](https://bun.sh)。
+
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 ## 部署到 GitHub Pages（Actions）
@@ -78,8 +81,8 @@ npm run dev
 
 之後每次 push 到 `main` 會自動：
 
-- `npm ci`
-- `npm run build`
+- `bun install --frozen-lockfile`（依 repo 內的 `bun.lock` 安裝）
+- `bun run build`
 - 上傳 `dist` 並部署到 Pages
 
 ### Vite base 設定
